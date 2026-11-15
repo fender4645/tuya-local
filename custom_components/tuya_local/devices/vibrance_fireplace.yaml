@@ -16,11 +16,19 @@ entities:
         mapping:
           - constraint: temperature_unit
             conditions:
-              - dps_val: F
+              - dps_val: f
                 value_redirect: temp_set_f
+                range:
+                  min: 41
+                  max: 95
       - id: 3
         name: current_temperature
         type: integer
+        mapping:
+          - constraint: temperature_unit
+            conditions:
+              - dps_val: f
+                value_redirect: current_temp_f
       - id: 13
         name: temperature_unit
         type: string
@@ -32,12 +40,14 @@ entities:
       - id: 14
         name: temp_set_f
         type: integer
+        hidden: true
         range:
           min: 41
           max: 95
       - id: 15
         name: current_temp_f
         type: integer
+        hidden: true
       - id: 5
         name: preset_mode
         type: string
